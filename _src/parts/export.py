@@ -20,7 +20,7 @@ page=('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
       '<meta property="og:type" content="website">\n'
       '<meta property="og:title" content="Art by Seema Sethi">\n'
       f'<meta property="og:description" content="{desc}">\n'
-      '<meta property="og:image" content="/og.jpg">\n'
+      '<meta property="og:image" content="/og-hero.jpg">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
       '<meta name="twitter:card" content="summary_large_image">\n'
       '<style>\n'+reset+P('style.css')+'</style>\n</head>\n<body>'
       +P('shell.html')+'<script>\n'+open(os.path.join(B,'imgmap.js')).read()+'\n\n'+P('data.js')+P('app.js')+'</script>\n</body>\n</html>\n')
@@ -40,5 +40,6 @@ seal=os.path.join(B,'img/w480/seema-sethi-viraasat-logo-1.webp')
 run=lambda *a:subprocess.run([FF,'-hide_banner','-loglevel','error','-y',*a],check=True)
 run('-i',seal,'-vf','scale=64:64','-frames:v','1',os.path.join(OUT,'favicon.png'))
 run('-i',seal,'-vf','scale=180:180','-frames:v','1',os.path.join(OUT,'apple-touch-icon.png'))
-run('-i',os.path.join(B,'img/wa-2025-12-07-17-24-20.webp'),'-vf','crop=1100:578:45:300,scale=1200:630','-frames:v','1','-q:v','3',os.path.join(OUT,'og.jpg'))
+# share image: a 1200x630 capture of the hero banner, kept beside the source
+shutil.copy(os.path.join(B,'og-hero.jpg'),os.path.join(OUT,'og-hero.jpg'))
 print('exported to',OUT)
