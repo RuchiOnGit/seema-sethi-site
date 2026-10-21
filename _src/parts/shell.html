@@ -1,0 +1,53 @@
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow" viewBox="0 0 18 10"><path d="M0 5h16M12 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 18 18"><path d="M11.5 3 5.5 9l6 6" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="i-next" viewBox="0 0 18 18"><path d="M6.5 3l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="i-x" viewBox="0 0 16 16"><path d="M2 2l12 12M14 2 2 14" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 18 12"><path d="M0 1h18M0 6h18M0 11h18" fill="none" stroke="currentColor" stroke-width="1.2"/></symbol>
+  <symbol id="i-orn" viewBox="0 0 34 12"><circle cx="17" cy="6" r="4.6" fill="none" stroke="currentColor"/><circle cx="17" cy="6" r="1.8" fill="currentColor"/><path d="M1 6h8M25 6h8" stroke="currentColor"/><circle cx="10.5" cy="6" r="1" fill="currentColor"/><circle cx="23.5" cy="6" r="1" fill="currentColor"/></symbol>
+</svg>
+
+<header class="hdr">
+  <div class="wrap hdr-in">
+    <a class="brand" href="#home" aria-label="Art by Seema Sethi, home"><small>Art by</small><span>Seema Sethi</span></a>
+    <nav class="nav" aria-label="Main" id="nav"></nav>
+    <button class="menu-btn" id="menu-open" aria-expanded="false" aria-controls="drawer"><svg><use href="#i-menu"/></svg>Menu</button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-label="Menu">
+  <div class="drawer-top">
+    <a class="brand" href="#home"><small>Art by</small><span>Seema Sethi</span></a>
+    <button class="x-btn" id="menu-close" aria-label="Close menu"><svg><use href="#i-x"/></svg></button>
+  </div>
+  <nav id="drawer-nav" aria-label="Main"></nav>
+</div>
+
+<main id="main"></main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div class="ftr-grid">
+      <div class="ftr-brand">
+        <img src="img/w480/seema-sethi-viraasat-logo-1.webp" width="480" height="480" alt="Viraasat seal" loading="lazy" decoding="async">
+        <a class="brand" href="#home"><small>Art by</small><span>Seema Sethi</span></a>
+        <p>A Tribute to Our Cultural Heritage through the Glow of Tanjore</p>
+      </div>
+      <div><h4>Collections</h4><ul><li><a href="#viraasat">Viraasat</a></li><li><a href="#prakriti">Prakriti</a></li><li><a href="#videshi">Videshi</a></li><li><a href="#bhakti">Bhakti</a></li></ul></div>
+      <div><h4>The Artist</h4><ul><li><a href="#about">About the Artist</a></li><li><a href="#shows">Art Shows</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div><h4>Follow Us</h4><ul><li><a href="https://www.instagram.com/canvases_in_gold/" target="_blank" rel="noopener">Instagram<br><span style="color:var(--gold)">@canvases_in_gold</span></a></li></ul></div>
+    </div>
+    <div class="ftr-base"><span>© Art by Seema Sethi</span><span>A Tribute to the Rich Cultural Heritage of India</span></div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Artwork viewer">
+  <span class="lb-n" id="lb-n"></span>
+  <button class="icon-btn lb-x" id="lb-x" aria-label="Close viewer"><svg><use href="#i-x"/></svg></button>
+  <button class="icon-btn prev" id="lb-prev" aria-label="Previous image"><svg><use href="#i-prev"/></svg></button>
+  <figure><img id="lb-img" alt=""><figcaption><span class="cap-t" id="lb-t"></span><span class="cap-m" id="lb-m"></span></figcaption></figure>
+  <button class="icon-btn next" id="lb-next" aria-label="Next image"><svg><use href="#i-next"/></svg></button>
+</div>
+

@@ -1,0 +1,45 @@
+{
+  "redirects": [
+    {
+      "source": "/viraasat",
+      "destination": "/#viraasat",
+      "permanent": true
+    },
+    {
+      "source": "/prakriti",
+      "destination": "/#prakriti",
+      "permanent": true
+    },
+    {
+      "source": "/videshi",
+      "destination": "/#videshi",
+      "permanent": true
+    },
+    {
+      "source": "/bhakti",
+      "destination": "/#bhakti",
+      "permanent": true
+    },
+    {
+      "source": "/about-the-artist",
+      "destination": "/#about",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/#contact",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(img|vid)/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000"
+        }
+      ]
+    }
+  ]
+}
