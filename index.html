@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=EB+Garamond:ital,wght@0,400..600;1,400..600&family=Marcellus+SC&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap">
-<meta name="theme-color" content="#14060A">
+<meta name="theme-color" content="#F7F0E4">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -53,7 +53,7 @@
   --jaali-lo:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cg fill='none' stroke='%238A6A2C' stroke-opacity='.07' stroke-width='1'%3E%3Ccircle cx='32' cy='32' r='14'/%3E%3Ccircle cx='32' cy='32' r='4'/%3E%3Ccircle cx='0' cy='0' r='14'/%3E%3Ccircle cx='64' cy='0' r='14'/%3E%3Ccircle cx='0' cy='64' r='14'/%3E%3Ccircle cx='64' cy='64' r='14'/%3E%3C/g%3E%3C/svg%3E");
   color-scheme:dark;
 }
-body[data-jewel=viraasat]{--jewel:#3A0C17}
+body[data-jewel=viraasat]{--jewel:#8B1728}   /* the site's own maroon; the client found the deeper wine too dark */
 body[data-jewel=prakriti]{--jewel:#0B3326}
 body[data-jewel=videshi]{--jewel:#122249}
 body[data-jewel=bhakti]{--jewel:#47200A}
@@ -61,7 +61,7 @@ body[data-jewel=bhakti]{--jewel:#47200A}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-padding-top:90px}
 body{background:var(--wall-deep);color:var(--text);font:400 1.1875rem/1.64 var(--f-body);font-variant-numeric:oldstyle-nums;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--wall-deep)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--ivory)}
 img,video{max-width:100%;display:block}
 img{height:auto}
 a{color:inherit}
@@ -132,30 +132,33 @@ main{overflow-x:clip}
 .light .icon-btn:hover{border-color:var(--kumkum);background:rgba(139,23,40,.05)}
 
 /* header */
-.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(20,6,10,.9);-webkit-backdrop-filter:saturate(1.3) blur(14px);backdrop-filter:saturate(1.3) blur(14px);border-bottom:1px solid var(--line)}
+/* header: an ivory bar (the client found the dark bar too heavy) */
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(247,240,228,.94);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid var(--line-lo);box-shadow:0 6px 24px -14px rgba(40,15,5,.35)}
 .hdr-in{display:flex;align-items:center;justify-content:space-between;gap:24px;height:76px}
 .brand{display:flex;flex-direction:column;gap:3px;line-height:1;text-decoration:none}
 .brand small{font:italic 400 .95rem/1 var(--f-display);color:var(--gold)}
 .brand span{font:400 1.3rem/1 var(--f-caps);letter-spacing:.14em;color:var(--text)}
+.hdr .brand small,.drawer .brand small{color:var(--gold-lo)}
+.hdr .brand span,.drawer .brand span{color:var(--ink)}
 .nav{display:flex;align-items:center;gap:clamp(16px,2.1vw,32px)}
-.nav a{position:relative;font:400 .78rem/1 var(--f-caps);letter-spacing:.17em;text-transform:uppercase;text-decoration:none;color:var(--text-soft);padding:8px 0;transition:color .25s}
-.nav a:hover{color:var(--gold-hi)}
-.nav a[aria-current=page]{color:var(--gold)}
-.nav a[aria-current=page]::after{content:"";position:absolute;left:50%;bottom:-8px;width:5px;height:5px;border-radius:50%;background:var(--gold);transform:translateX(-50%)}
-.nav a.nav-cta{border:1px solid var(--gold);color:var(--gold-hi);padding:11px 18px}
+.nav a{position:relative;font:400 .78rem/1 var(--f-caps);letter-spacing:.17em;text-transform:uppercase;text-decoration:none;color:var(--ink-soft);padding:8px 0;transition:color .25s}
+.nav a:hover{color:var(--kumkum)}
+.nav a[aria-current=page]{color:var(--kumkum)}
+.nav a[aria-current=page]::after{content:"";position:absolute;left:50%;bottom:-8px;width:5px;height:5px;border-radius:50%;background:var(--gold-lo);transform:translateX(-50%)}
+.nav a.nav-cta{border:1px solid var(--kumkum);color:var(--kumkum);padding:11px 18px}
 .nav a.nav-cta::after{display:none}
-.nav a.nav-cta:hover{background:rgba(201,164,92,.14)}
-.menu-btn{display:none;align-items:center;gap:10px;background:none;border:1px solid var(--line);padding:10px 14px;cursor:pointer;font:400 .74rem/1 var(--f-caps);letter-spacing:.2em;color:var(--gold-hi)}
+.nav a.nav-cta:hover{background:rgba(139,23,40,.07)}
+.menu-btn{display:none;align-items:center;gap:10px;background:none;border:1px solid var(--line-lo);padding:10px 14px;cursor:pointer;font:400 .74rem/1 var(--f-caps);letter-spacing:.2em;color:var(--kumkum)}
 .menu-btn svg{width:18px;height:12px}
 @media (max-width:1060px){.nav{display:none}.menu-btn{display:inline-flex}}
 
-.drawer{position:fixed;inset:0;z-index:80;overflow-y:auto;background-color:var(--wall-deep);background-image:var(--jaali);padding:calc(env(safe-area-inset-top,0px) + 20px) max(20px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 32px) max(20px,env(safe-area-inset-left,0px))}
+.drawer{position:fixed;inset:0;z-index:80;overflow-y:auto;background-color:var(--ivory);background-image:var(--jaali-lo);padding:calc(env(safe-area-inset-top,0px) + 20px) max(20px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 32px) max(20px,env(safe-area-inset-left,0px))}
 .drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
 .drawer nav{display:grid;gap:6px}
-.drawer nav a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;text-decoration:none;padding:14px 0;border-bottom:1px solid var(--line);font:500 clamp(1.7rem,7vw,2.4rem)/1.1 var(--f-display);color:var(--text)}
-.drawer nav a span{font-family:var(--f-deva);font-size:1rem;color:var(--gold)}
-.drawer nav a[aria-current=page]{color:var(--gold-hi)}
-.x-btn{background:none;border:1px solid var(--line);width:44px;height:44px;display:grid;place-items:center;cursor:pointer;color:var(--gold-hi)}
+.drawer nav a{display:flex;align-items:baseline;justify-content:space-between;gap:16px;text-decoration:none;padding:14px 0;border-bottom:1px solid var(--line-lo);font:500 clamp(1.7rem,7vw,2.4rem)/1.1 var(--f-display);color:var(--ink)}
+.drawer nav a span{font-family:var(--f-deva);font-size:1rem;color:var(--gold-lo)}
+.drawer nav a[aria-current=page]{color:var(--kumkum)}
+.x-btn{background:none;border:1px solid var(--line-lo);width:44px;height:44px;display:grid;place-items:center;cursor:pointer;color:var(--kumkum)}
 .x-btn svg{width:16px;height:16px}
 
 /* soft arches: a round-top jharokha with a gilded outline */

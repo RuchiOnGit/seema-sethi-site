@@ -2,6 +2,9 @@
 # Usage: python3 export.py <out_dir>
 import json,os,shutil,subprocess,sys
 B=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OUT_ARG=os.path.abspath(os.path.expanduser(sys.argv[1]))
+# img/ and vid/ live beside the source in the scratch build, or already in the site folder when exporting from _src
+A=B if os.path.isdir(os.path.join(B,'img')) else OUT_ARG
 OUT=os.path.abspath(os.path.expanduser(sys.argv[1]))
 FF='/Users/ruchi/video-studio/node_modules/ffmpeg-static/ffmpeg'
 P=lambda n:open(os.path.join(B,'parts',n),encoding='utf-8').read()
@@ -14,7 +17,7 @@ reset=(':root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-a
 page=('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
       '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
       +head+
-      '<meta name="theme-color" content="#14060A">\n'
+      '<meta name="theme-color" content="#F7F0E4">\n'
       '<link rel="icon" type="image/png" href="/favicon.png">\n'
       '<link rel="apple-touch-icon" href="/apple-touch-icon.png">\n'
       '<meta property="og:type" content="website">\n'
@@ -27,8 +30,9 @@ page=('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
 
 os.makedirs(OUT,exist_ok=True)
 open(os.path.join(OUT,'index.html'),'w',encoding='utf-8').write(page)
-for d in ('img','vid'):
-    shutil.copytree(os.path.join(B,d),os.path.join(OUT,d),dirs_exist_ok=True)
+if A!=OUT:
+    for d in ('img','vid'):
+        shutil.copytree(os.path.join(A,d),os.path.join(OUT,d),dirs_exist_ok=True)
 
 # old Zyro page URLs keep working by landing on the matching section
 routes={'viraasat':'viraasat','prakriti':'prakriti','videshi':'videshi','bhakti':'bhakti','about-the-artist':'about','contact':'contact'}
@@ -36,7 +40,7 @@ vercel={'redirects':[{'source':f'/{a}','destination':f'/#{b}','permanent':True} 
         'headers':[{'source':'/(img|vid)/(.*)','headers':[{'key':'Cache-Control','value':'public, max-age=2592000'}]}]}
 json.dump(vercel,open(os.path.join(OUT,'vercel.json'),'w'),indent=2)
 
-seal=os.path.join(B,'img/w480/seema-sethi-viraasat-logo-1.webp')
+seal=os.path.join(A,'img/w480/seema-sethi-viraasat-logo-1.webp')
 run=lambda *a:subprocess.run([FF,'-hide_banner','-loglevel','error','-y',*a],check=True)
 run('-i',seal,'-vf','scale=64:64','-frames:v','1',os.path.join(OUT,'favicon.png'))
 run('-i',seal,'-vf','scale=180:180','-frames:v','1',os.path.join(OUT,'apple-touch-icon.png'))
