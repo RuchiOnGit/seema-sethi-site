@@ -1,13 +1,14 @@
 /* ---------- helpers ---------- */
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const src=n=>IMG[n]?`img/${n}.${IMG[n][0]}`:'';
-/* smaller copies live in img/w480 and img/w960 whenever the original is meaningfully wider */
-const VARIANTS=[480,960];
+/* smaller copies live in img/w480, w960 and w1440 whenever the original is meaningfully wider */
+const VARIANTS=[480,960,1440];
 function srcset(n){const w=IMG[n][1],v=VARIANTS.filter(x=>w>x*1.15);return v.length?v.map(x=>`img/w${x}/${n}.webp ${x}w`).concat(`${src(n)} ${w}w`).join(', '):''}
 /* o: {eager, hi (fetch first), cls, sizes, h (shown at this pixel height)} */
 function pic(n,alt,o={}){const m=IMG[n];if(!m){console.warn('missing image',n);return ''}
   const ss=srcset(n),sizes=o.h?`${Math.round(o.h*m[1]/m[2])}px`:(o.sizes||'100vw');
-  return `<img src="${src(n)}"${ss?` srcset="${ss}" sizes="${sizes}"`:''} width="${m[1]}" height="${m[2]}" alt="${esc(alt)}"${o.eager?'':' loading="lazy"'}${o.hi?' fetchpriority="high"':''} decoding="async"${o.cls?` class="${o.cls}"`:''}>`}
+  /* m[3] is the photo's average colour: a soft placeholder instead of a black box while it loads */
+  return `<img src="${src(n)}"${ss?` srcset="${ss}" sizes="${sizes}"`:''} width="${m[1]}" height="${m[2]}" alt="${esc(alt)}"${o.eager?'':' loading="lazy"'}${o.hi?' fetchpriority="high"':''} decoding="async"${o.cls?` class="${o.cls}"`:''}${m[3]?` style="background:${m[3]}"`:''}>`}
 const artSizes=w=>{const m=IMG[w.img];return `(max-width:860px) 90vw, min(46vw, ${Math.round(660*m[1]/m[2])}px)`};
 const arch=inner=>`<div class="arch"><div class="arch-img">${inner}</div></div>`;
 const orn=`<div class="orn" aria-hidden="true"><i></i><svg><use href="#i-orn"/></svg><i></i></div>`;
@@ -192,7 +193,7 @@ function collectionPage(key){
     <section class="sec light marble"><div class="wrap narrow"><div class="prose dropcap">${paras(P.intro)}</div></div></section>`;
   let flip=false;
   P.chapters.forEach((c,ci)=>{
-    if(c.band) out+=`<div class="band">${pic(c.band,'',{sizes:'100vw'})}</div>`;
+    if(c.band) out+=`<div class="band">${pic(c.band,c.bandAlt||'',{sizes:'100vw'})}</div>`;
     const room=ci%2?'light sand':'wall';
     const g='c-'+c.id;
     let body;
@@ -292,7 +293,7 @@ function route(){
   document.getElementById('drawer-nav').innerHTML=navHTML(h,true);
   document.title=h==='home'?'Art by Seema Sethi':`${h==='about'?'About the Artist':h==='contact'?'Contact':PAGES[h].name} · Art by Seema Sethi`;
   closeDrawer();
-  initTesti();initReels();
+  initTesti();initReels();warmImages();
   if(jump) requestAnimationFrame(()=>document.getElementById(jump)?.scrollIntoView());
   else window.scrollTo(0,0);
 }
@@ -310,6 +311,30 @@ function initTesti(){
       qTimers.push(setInterval(()=>{if(!paused&&!document.hidden)show(i+1)},7000));
     }
   });
+}
+/* once the page has settled, fetch the photos further down at low priority so they are already cached when scrolled to
+   (skipped on Data Saver and 2G; the browser's own lazy loading only starts them a screen or two ahead) */
+let warmToken=0;
+function warmImages(){
+  const my=++warmToken,c=navigator.connection;
+  if(c&&(c.saveData||/(^|-)2g$/.test(c.effectiveType||'')))return;
+  const go=()=>{
+    const list=[...document.getElementById('main').querySelectorAll('img[loading=lazy]')].filter(i=>!i.complete).slice(0,70);
+    let k=0,busy=0;
+    const pump=()=>{
+      while(busy<3&&k<list.length){
+        if(my!==warmToken)return;
+        const el=list[k++];if(el.complete)continue;
+        busy++;
+        const p=new Image();p.fetchPriority='low';p.decoding='async';
+        p.onload=p.onerror=()=>{busy--;pump()};
+        if(el.srcset){p.sizes=el.sizes;p.srcset=el.srcset}
+        p.src=el.getAttribute('src');
+      }
+    };
+    pump();
+  };
+  (window.requestIdleCallback||setTimeout)(()=>setTimeout(go,1200),{timeout:4000});
 }
 /* reels: load and play only near the viewport */
 function initReels(){
@@ -334,6 +359,7 @@ document.getElementById('menu-close').addEventListener('click',closeDrawer);
 const lb=document.getElementById('lb'),lbImg=document.getElementById('lb-img');
 let lbG=null,lbI=0,lbReturn=null;
 function lbShow(){const it=GROUPS[lbG][lbI];const m=IMG[it.n];lbImg.src=src(it.n);lbImg.width=m[1];lbImg.height=m[2];lbImg.alt=it.t;
+  const n=GROUPS[lbG].length;if(n>1)[1,-1].forEach(d=>{new Image().src=src(GROUPS[lbG][(lbI+d+n)%n].n)});   /* next and previous are ready before the arrow is pressed */
   document.getElementById('lb-t').textContent=it.t;document.getElementById('lb-m').textContent=it.m;
   const many=GROUPS[lbG].length>1;document.getElementById('lb-n').textContent=many?`${lbI+1} / ${GROUPS[lbG].length}`:'';
   document.getElementById('lb-prev').hidden=!many;document.getElementById('lb-next').hidden=!many}

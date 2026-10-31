@@ -79,7 +79,15 @@ viraasat:{name:'Viraasat',deva:'विरासत',kicker:'An Ode to our rich c
         {img:'taj-ensemble',head:'The Taj Ensemble',desc:['A grand composition that brings together the Taj’s most iconic elements—its domes, arches, jaalis, and reflective symmetry. This piece captures the monument the way the world first remembers it: majestic, serene, and impossibly perfect. A centerpiece for collectors who want the full presence of the Taj in a single frame.'],title:'The Taj Ensemble',size:'20 x 22 inches (without frame)',medium:'Gold foil work and water colours',year:'2009'},
         {img:'shahjahan',tag:'The visionary behind the world’s greatest ode to love.',head:'Shah Jahan',desc:['This portrait honors Shah Jahan as both emperor and artist—an aesthete who imagined beauty so enduring that it outlived centuries. The artwork offers a regal portrayal in rich textures and gilded accents, capturing his legacy, ambition, and profound devotion.'],title:'Shah Jahan',size:'11 x 14 inches (without frame)',medium:'Oil paints and Tanjore style work with semi-precious stones and gold foil work.',year:'2009'},
         {img:'mumtaaz',tag:'Grace immortalized in gold and marble tones.',head:'Mumtaz Mahal',desc:['A tribute to Mumtaz—the muse, the heartbeat, the inspiration. This piece reflects her elegance, softness, and the quiet strength that inspired the Taj Mahal’s creation. A luminous blend of femininity and heritage, crafted to evoke emotion with every glance.'],title:'Mumtaz Mahal',size:'11 x 14 inches (without frame)',medium:'Oil paints and Tanjore style work with semi-precious stones and gold foil work.',year:'2009'}]},
-    {id:'jaalis',band:'ub-textile',title:'The Jaalis of Taj',grid:true,
+    {id:'dialogue',title:'A Dialogue with Heritage',
+      works:[{img:'a-dialogue-with-heritage',desc:[
+        'Some spaces leave an impression that stays with you long after you have left them. For me, the magnificent ceilings of the Taj Mahal were one such experience.',
+        'As I looked up at the intricate patterns, flowing floral forms and the captivating interplay of deep blue and gold, I was deeply inspired by the extraordinary artistry and craftsmanship of our heritage.',
+        'This canvas is my personal interpretation of that experience. Rather than reproducing the architectural design, I have sought to capture its spirit and translate it into my own contemporary artistic expression.',
+        'Through layers of detail, texture and gold, I hope to create a dialogue between the grandeur of India\'s past and the possibilities of contemporary art.',
+        'This work is a tribute to the timeless beauty of Indian heritage—seen through my eyes and recreated through my hands.'],
+        title:'A Dialogue with Heritage',size:'24 x 24 inches (without frame)',medium:'Gold foil work and water colours',year:'2026'}]},
+    {id:'jaalis',band:'ub-ceiling',bandAlt:'A painted blue and gold domed ceiling',title:'The Jaalis of Taj',grid:true,
       works:[
         {img:'taj-jaali-sitara',title:'Taj Jaali – Sitara',size:'10 x 12 inches (without frame)',medium:'Gold foil work and water colours',year:'2008'},
         {img:'taj-jaali-noor',title:'Taj Jaali – Noor',size:'10 x 12 inches (without frame)',medium:'Gold foil work and water colours',year:'2008'},
