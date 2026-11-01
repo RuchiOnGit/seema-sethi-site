@@ -86,8 +86,9 @@ viraasat:{name:'Viraasat',deva:'विरासत',kicker:'An Ode to our rich c
         'This canvas is my personal interpretation of that experience. Rather than reproducing the architectural design, I have sought to capture its spirit and translate it into my own contemporary artistic expression.',
         'Through layers of detail, texture and gold, I hope to create a dialogue between the grandeur of India\'s past and the possibilities of contemporary art.',
         'This work is a tribute to the timeless beauty of Indian heritage—seen through my eyes and recreated through my hands.'],
-        title:'A Dialogue with Heritage',size:'24 x 24 inches (without frame)',medium:'Gold foil work and water colours',year:'2026'}]},
-    {id:'jaalis',band:'ub-ceiling',bandAlt:'A painted blue and gold domed ceiling',title:'The Jaalis of Taj',grid:true,
+        title:'A Dialogue with Heritage',size:'24 x 24 inches (without frame)',medium:'Gold foil work and water colours',year:'2026',
+        inspo:{img:'inspiration-ceiling',alt:'A painted blue and gold ceiling, seen from below',split:2}}]},
+    {id:'jaalis',title:'The Jaalis of Taj',grid:true,
       works:[
         {img:'taj-jaali-sitara',title:'Taj Jaali – Sitara',size:'10 x 12 inches (without frame)',medium:'Gold foil work and water colours',year:'2008'},
         {img:'taj-jaali-noor',title:'Taj Jaali – Noor',size:'10 x 12 inches (without frame)',medium:'Gold foil work and water colours',year:'2008'},

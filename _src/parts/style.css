@@ -255,6 +255,12 @@ main{overflow-x:clip}
 .exhibit{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(36px,6vw,96px);align-items:center;padding-block:clamp(36px,5vw,72px)}
 .exhibit.flip .art{order:2}
 .exhibit.solo{grid-template-columns:minmax(0,1fr)}
+/* the inspiration beside a work: the whole ceiling in a gilded circle, turning slowly as if looking up */
+.dome .zoom{width:min(100%,440px);padding:clamp(7px,.9vw,11px);border:1px solid rgba(201,164,92,.6);border-radius:50%;filter:drop-shadow(0 34px 40px rgba(0,0,0,.45))}
+.dome-in{display:block;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 0 0 1px var(--gold)}
+.dome-in img{width:100%;height:100%;animation:spin 240s linear infinite}
+.light .dome .zoom{border-color:var(--gold-lo);filter:drop-shadow(0 26px 30px rgba(70,35,10,.3))}
+.dlg+.dlg{padding-top:0}
 .ex-text{display:grid;gap:20px;justify-items:start;min-width:0}
 @media (max-width:860px){.exhibit{grid-template-columns:minmax(0,1fr)}.exhibit.flip .art{order:0}}
 

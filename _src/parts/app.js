@@ -31,7 +31,15 @@ function framed(w,g,sizes){
   const i=reg(g,w.img,w.title,metaOf(w));
   return `<figure class="art${w.round?' art-round':''}"><button class="zoom" data-g="${g}" data-i="${i}" aria-label="View ${esc(w.title)} larger"><span class="frame">${pic(w.img,w.title,{sizes:sizes||artSizes(w)})}</span></button>${caption(w)}</figure>`;
 }
+/* a work beside what inspired it: the whole inspiration in a gilded circle with the first paragraphs, then the work with the rest */
+function dialogue(w,g){
+  const s=w.inspo.split,i=reg(g,w.inspo.img,'The inspiration','');
+  const text=(label,ps)=>`<div class="ex-text"><p class="eyebrow left">${label}</p><div class="prose">${paras(ps)}</div></div>`;
+  return `<article class="exhibit dlg"><figure class="art dome"><button class="zoom" data-g="${g}" data-i="${i}" aria-label="View the inspiration larger"><span class="dome-in">${pic(w.inspo.img,w.inspo.alt,{sizes:'(max-width:860px) 80vw, min(36vw, 440px)'})}</span></button></figure>${text('The inspiration',w.desc.slice(0,s))}</article>
+    <article class="exhibit flip dlg">${framed(w,g)}${text('The interpretation',w.desc.slice(s))}</article>`;
+}
 function exhibit(w,g,flip){
+  if(w.inspo) return dialogue(w,g);
   const text=[
     w.tag?`<p class="tagline">${esc(w.tag)}</p>`:'',
     w.head?`<h3 class="h3">${esc(w.head)}</h3>`:'',

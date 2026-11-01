@@ -1,7 +1,7 @@
 # Image notes
 
 - `img/a-dialogue-with-heritage.webp` — the artist's own photo of "A Dialogue with Heritage" (supplied 2026-10-31), wall cropped off.
-- `img/ub-ceiling.webp` — blue-and-gold domed ceiling, stock photo from Unsplash (photographer Maksim Zinchenko, photo-1783670588051-247c1b12f7e6; Unsplash License, no credit required). Stand-in for the Taj Mahal ceiling the client pictured; swap in her own photo if she has one (re-run `_src/tools/images.py`).
+- `img/inspiration-ceiling.webp` — "The inspiration" circle beside "A Dialogue with Heritage": square crop of a blue-and-gold domed ceiling, stock photo from Unsplash (photographer Maksim Zinchenko, photo-1783670588051-247c1b12f7e6; Unsplash License, no credit required). It is not the Taj Mahal (the Taj's painted ceilings are red sandstone; the client's reference screenshot looks like Akbar's Tomb, Sikandra), so it carries no place caption. Swap in her own photo if she has one (re-run `_src/tools/images.py`). CC0 photos of the real Taj mosque ceiling exist on Wikimedia Commons ("Ceiling, Taj Mahal mosque.JPG", user Wmpearl) if a genuine Taj image is ever wanted.
 - `img/ub-taj`, `ub-egypt`, `ub-tiger` — page-banner photos carried over from the original site's builder (Unsplash), cropped and recompressed.
 - Every other image is carried over from the original artbyseemasethi.com.
 
