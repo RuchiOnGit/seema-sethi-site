@@ -5,3 +5,4 @@ _src/preview.html
 
 # rendered social images (regenerate with _src/social/render.sh)
 _src/social/*.png
+_src/social/*.mp4
