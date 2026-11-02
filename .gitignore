@@ -2,3 +2,6 @@
 .vercel
 _src/seema-sethi.html
 _src/preview.html
+
+# rendered social images (regenerate with _src/social/render.sh)
+_src/social/*.png
