@@ -424,6 +424,7 @@ main{overflow-x:clip}
 .ftr a{text-decoration:none;color:var(--text-soft);transition:color .2s}
 .ftr a:hover{color:var(--gold-hi)}
 .ftr-base{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font:400 .7rem/1.4 var(--f-caps);letter-spacing:.18em;color:var(--text-soft);text-transform:uppercase}
+.ftr-base a{color:var(--gold)}
 
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:90;background:rgba(10,3,5,.95);display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:8px;padding:calc(env(safe-area-inset-top,0px) + 64px) max(10px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 24px) max(10px,env(safe-area-inset-left,0px))}
